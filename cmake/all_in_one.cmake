@@ -10,14 +10,10 @@ if("${ALL_IN_ONE_FETCH_ROOT}" STREQUAL "")
     set(ALL_IN_ONE_FETCH_ROOT ${CMAKE_SOURCE_DIR}/ao_ext)
 endif()
 
-# 指定git仓库地址
-if("${ALL_IN_ONE_FETCH_IP_PORT}" STREQUAL "")
-    set(ALL_IN_ONE_FETCH_IP_PORT "192.168.0.60")
-endif()
 
 # 指定版本
 set(SILLY_UTIL_TAG  master)  
-set(ALL_IN_ONE_GIT_URL  "http://${ALL_IN_ONE_FETCH_IP_PORT}/douliyang/all_in_one.git")  
+set(ALL_IN_ONE_GIT_URL  "https://gitee.com/master-turtle/all_in_one.git")  
 
 
 FetchContent_Declare(
@@ -32,12 +28,12 @@ FetchContent_MakeAvailable(all_in_one)
 IF(NOT EXISTS "${CMAKE_SOURCE_DIR}/ao_cmake")
     FILE(MAKE_DIRECTORY "${CMAKE_SOURCE_DIR}/ao_cmake")
 ENDIF()
-execute_process(COMMAND ${CMAKE_COMMAND} -E  copy "${ALL_IN_ONE_FETCH_ROOT}/all_in_one/cmake/env_check.cmake" "${CMAKE_SOURCE_DIR}/ao_cmake/env_check.cmake")
+execute_process(COMMAND ${CMAKE_COMMAND} -E  copy "${ALL_IN_ONE_FETCH_ROOT}/all_in_one/cmake/env_module.cmake" "${CMAKE_SOURCE_DIR}/ao_cmake/env_module.cmake")
 execute_process(COMMAND ${CMAKE_COMMAND} -E  copy "${ALL_IN_ONE_FETCH_ROOT}/all_in_one/.clang-format" "${CMAKE_SOURCE_DIR}/.clang-format")
 
 
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/ao_cmake;${CMAKE_MODULE_PATH}")
-include(env_check)
+include(env_module)
 \
 
 include_directories("${ALL_IN_ONE_FETCH_ROOT}/all_in_one/core")
