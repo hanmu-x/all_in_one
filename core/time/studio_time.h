@@ -63,9 +63,9 @@ static std::string TimeToFormatString(const boost::posix_time::ptime& time, cons
 }
 
 // 转换时间格式的函数
-static std::string convertTmFormat(const std::string& inputDate, const std::string& inputFormat, const std::string& outputFormat)
+static std::string convertTmFormat(const std::string& inputTm, const std::string& inputFormat, const std::string& outputFormat)
 {
-    std::istringstream ss(inputDate);
+    std::istringstream ss(inputTm);
     std::ostringstream oss;
     std::tm time = {};
 
