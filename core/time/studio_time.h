@@ -3,7 +3,10 @@
 #include <boost/date_time/posix_time/ptime.hpp>
 #include <boost/date_time/posix_time/posix_time.hpp>
 #include <boost/date_time/c_local_time_adjustor.hpp>
-
+#include <iostream>
+#include <iomanip>
+#include <ctime>
+#include <chrono>
 #include "studio_macros.h"
 
 #ifndef __studio_TIME_H__
@@ -59,9 +62,40 @@ static std::string TimeToFormatString(const boost::posix_time::ptime& time, cons
     return retStr;
 }
 
-}  
+// 转换时间格式的函数
+static std::string convertTmFormat(const std::string& inputDate, const std::string& inputFormat, const std::string& outputFormat)
+{
+    std::istringstream ss(inputDate);
+    std::ostringstream oss;
+    std::tm time = {};
 
+    ss >> std::get_time(&time, inputFormat.c_str());
+    if (ss.fail())
+    {
+        std::cout << "Error: Failed to parse input date with format " << inputFormat << std::endl;
+        return "";
+    }
+
+    oss << std::put_time(&time, outputFormat.c_str());
+    if (oss.fail())
+    {
+        std::cout << "Error: Failed to format output date with format " << outputFormat << std::endl;
+        return "";
+    }
+
+    return oss.str();
+}
+
+
+
+
+
+
+
+
+
+
+
+}  // namespace simple_time
 
 #endif
-
-

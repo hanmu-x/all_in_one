@@ -17,6 +17,28 @@ class studio_file
     /// <returns></returns>
     static std::vector<std::string> collectFileOrDirEntries(const std::string& directoryPath, bool isFile = true, bool returnFullPath = true, bool recursive = false);
 
+    /// <summary>
+    /// 判断目录是否存在,若不存在创建
+    /// </summary>
+    /// <param name="directoryPath"></param>
+    /// <returns></returns>
+    static bool createDirectoryIfNotExists(const std::string& directoryPath);
+
+    /// <summary>
+    /// 统计给定目录下的文件数量
+    /// </summary>
+    /// <param name="directory_path"></param>
+    /// <returns></returns>
+    static int count_files(const std::string& directory_path);
+
+    /// <summary>
+    /// 获取指定目录下所有文件最后修改时间
+    /// </summary>
+    /// <param name="path"></param>
+    /// <returns></returns>
+    static std::map<std::string, std::string> getLastModifiedTimesInDirectory(const std::string& path);
+    
+
     studio_file() = default;
     ~studio_file() = default;
 };
