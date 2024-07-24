@@ -15,15 +15,15 @@
 namespace simple_time
 {
 
-const static char* DATE_FORMAT_1 = "%Y-%m-%d %H:%M:%S";
-const static char* DATE_FORMAT_2 = "%Y%m%d%H";
-const static char* DATE_FORMAT_3 = "%H";
-const static char* DATE_FORMAT_4 = "%Y%m%d%H%M";
-const static char* DATE_FORMAT_5 = "%Y-%m-%d %H:%M";
-const static char* DATE_FORMAT_6 = "%Y%m%d";
-const static char* DATE_FORMAT_7 = "%Y-%m-%d-%H-%M-%S";
-const static char* DATE_FORMAT_8 = "%Y-%m-%d %H:00";
-const static char* DATE_FORMAT_10 = "%Y%m%f%h00";
+const static char* TM_FORMAT_1 = "%Y-%m-%d %H:%M:%S";
+const static char* TM_FORMAT_2 = "%Y%m%d%H";
+const static char* TM_FORMAT_3 = "%H";
+const static char* TM_FORMAT_4 = "%Y%m%d%H%M";
+const static char* TM_FORMAT_5 = "%Y-%m-%d %H:%M";
+const static char* TM_FORMAT_6 = "%Y%m%d";
+const static char* TM_FORMAT_7 = "%Y-%m-%d-%H-%M-%S";
+const static char* TM_FORMAT_8 = "%Y-%m-%d %H:00";
+const static char* TM_FORMAT_10 = "%Y%m%f%h00";
 
 static boost::posix_time::ptime NowPosixTime()
 {
@@ -43,7 +43,7 @@ static boost::posix_time::ptime TimeFromString(const std::string& str)
     return _ptime;
 }
 
-static std::string TimeToFormatString(const boost::posix_time::ptime& time, const std::string& format = DATE_FORMAT_5)
+static std::string TimeToFormatString(const boost::posix_time::ptime& time, const std::string& format = TM_FORMAT_5)
 {
     std::string retStr;
     try
