@@ -1,7 +1,7 @@
 
-#include "common_file.h"
+#include "studio_file.h"
 
-std::vector<std::string> common_file::collectFileOrDirEntries(const std::string& directoryPath, bool isFile, bool returnFullPath, bool recursive)
+std::vector<std::string> studio_file::collectFileOrDirEntries(const std::string& directoryPath, bool isFile, bool returnFullPath, bool recursive)
 {
     std::vector<std::string> entries;
     try

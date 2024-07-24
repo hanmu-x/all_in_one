@@ -4,10 +4,10 @@
 #include <boost/date_time/posix_time/posix_time.hpp>
 #include <boost/date_time/c_local_time_adjustor.hpp>
 
-#include "common_macros.h"
+#include "studio_macros.h"
 
-#ifndef __COMMON_TIME_H__
-#define __COMMON_TIME_H__
+#ifndef __studio_TIME_H__
+#define __studio_TIME_H__
 
 namespace simple_time
 {

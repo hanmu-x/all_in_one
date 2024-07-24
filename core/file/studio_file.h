@@ -1,10 +1,10 @@
 
-#include "common_macros.h"
+#include "studio_macros.h"
 
-#ifndef __COMMON_FILE_H__
-#define __COMMON_FILE_H__
+#ifndef __studio_FILE_H__
+#define __studio_FILE_H__
 
-class common_file
+class studio_file
 {
   public:
     /// <summary>
@@ -17,8 +17,8 @@ class common_file
     /// <returns></returns>
     static std::vector<std::string> collectFileOrDirEntries(const std::string& directoryPath, bool isFile = true, bool returnFullPath = true, bool recursive = false);
 
-    common_file() = default;
-    ~common_file() = default;
+    studio_file() = default;
+    ~studio_file() = default;
 };
 
 #endif
