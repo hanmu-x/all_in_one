@@ -22,12 +22,12 @@ bool studio_crc::verifyCRC32(const char* data, size_t dataSize, unsigned int crc
     if (crc32_recv == crc32_calc)
     {
         std::cout << "CRC32 check success" << std::endl;
-        return true;  // 返回文件大小，便于后续处理
+        return true;  
     }
     else
     {
         std::cout << "CRC32 check fail" << std::endl;
-        return false;  // 返回错误代码或特殊值，表示校验失败
+        return false;  
     }
 }
 
@@ -52,12 +52,12 @@ bool studio_crc::verifyCRC16(uint8_t* data, uint16_t dataSize, uint16_t crc16_re
     if (res_crc == crc16_recv)
     {
         std::cout << "CRC16 check success" << std::endl;
-        return true;  // 返回文件大小，便于后续处理
+        return true;  
     }
     else
     {
         std::cout << "CRC16 check fail" << std::endl;
-        return false;  // 返回错误代码或特殊值，表示校验失败
+        return false;  
     }
 }
 
