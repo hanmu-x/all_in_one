@@ -7,6 +7,9 @@
 int main(int argc, char* argv[])
 {
     
+    return 0;
+
+
     std::string inputDate1 = "2023-07-24 14:30:00";
     std::string outputDate1 = simple_time::convertTmFormat(inputDate1, simple_time::TM_FORMAT_1, simple_time::TM_FORMAT_2);
     std::cout << "Converted date 1: " << outputDate1 << std::endl;

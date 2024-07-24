@@ -25,7 +25,8 @@ endif()
 find_package(jsoncpp CONFIG REQUIRED)
 target_link_libraries(${PROJECT_NAME} PUBLIC JsonCpp::JsonCpp)
 
-
+find_package(ZLIB REQUIRED)
+target_link_libraries(${PROJECT_NAME} PUBLIC ZLIB::ZLIB)
 
 if(IS_LINUX)
 
