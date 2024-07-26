@@ -1,4 +1,7 @@
 
+#ifndef __STUDIO_MACROS_H__
+#define __STUDIO_MACROS_H__
+
 // 标准c++头文件
 // 输入输出库
 #include <iostream>
@@ -98,4 +101,10 @@
 #ifndef AO_ERROR_PRINT
 // 打印错误信息
 #define AO_ERROR_PRINT(s, ...) printf(AO_PRINTF_COLOR_RED "\n[ERROR] %s:%I32d \n ... " s AO_PRINTF_COLOR_NONE, AO_FILE_NAME, __LINE__, ##__VA_ARGS__);
+#endif
+
+
+
+
+
 #endif
