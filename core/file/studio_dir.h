@@ -1,8 +1,9 @@
 
+#ifndef STUDIO_DIR_H
+#define STUDIO_DIR_H
+
 #include "studio_macros.h"
 
-#ifndef __STUDIO_DIR_H__
-#define __STUDIO_DIR_H__
 
 class studio_dir
 {
@@ -43,4 +44,4 @@ class studio_dir
     ~studio_dir() = default;
 };
 
-#endif
+#endif // STUDIO_DIR_H

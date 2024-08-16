@@ -1,4 +1,7 @@
 
+#ifndef STUDIO_TIME_H
+#define STUDIO_TIME_H
+
 
 #include <boost/date_time/posix_time/ptime.hpp>
 #include <boost/date_time/posix_time/posix_time.hpp>
@@ -9,8 +12,6 @@
 #include <chrono>
 #include "studio_macros.h"
 
-#ifndef __STUDIO_TIME_H__
-#define __STUDIO_TIME_H__
 
 namespace simple_time
 {
@@ -146,4 +147,4 @@ static std::string tmToString(const std::tm& t, const std::string& format = "%Y-
 
 
 
-#endif  // __STUDIO_TIME_H__
+#endif  // STUDIO_TIME_H

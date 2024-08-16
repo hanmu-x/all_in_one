@@ -1,9 +1,11 @@
 
 
+#ifndef STUDIO_STR_ALGO_H
+#define STUDIO_STR_ALGO_H
+
+
 #include "studio_macros.h"
 
-#ifndef STUDIO_STRING_H
-#define STUDIO_STRING_H
 
 
 class studio_str_algo
@@ -42,6 +44,6 @@ private:
 };
 
 
-#endif
+#endif   // STUDIO_STR_ALGO_H
 
 

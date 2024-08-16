@@ -1,8 +1,9 @@
 
+#ifndef STUDIO_FILE_H
+#define STUDIO_FILE_H
+
 #include "studio_macros.h"
 
-#ifndef __STUDIO_FILE_H__
-#define __STUDIO_FILE_H__
 
 class studio_file
 {
@@ -27,4 +28,4 @@ class studio_file
     ~studio_file() = default;
 };
 
-#endif
+#endif // STUDIO_FILE_H

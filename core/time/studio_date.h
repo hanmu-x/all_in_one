@@ -1,3 +1,8 @@
+
+#ifndef STUDIO_DATE_H
+#define STUDIO_DATE_H
+
+
 #include "studio_macros.h"
 
 namespace simple_date
@@ -83,3 +88,15 @@ std::tm endOfMonth(const std::tm& t)
 }
 
 }  // namespace simple_date
+
+
+#endif  // STUDIO_DATE_H
+
+
+
+
+
+
+
+
+

@@ -1,8 +1,9 @@
 
-#include "studio_macros.h"
-
 #ifndef DISK_SPACE_H
 #define DISK_SPACE_H
+
+#include "studio_macros.h"
+
 
 class studio_diskspace
 {
@@ -43,4 +44,4 @@ class studio_diskspace
     }
 };
 
-#endif
+#endif // DISK_SPACE_H

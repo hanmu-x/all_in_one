@@ -1,6 +1,6 @@
 
-#ifndef __STUDIO_MACROS_H__
-#define __STUDIO_MACROS_H__
+#ifndef STUDIO_MACROS_H
+#define STUDIO_MACROS_H
 
 // 标准c++头文件
 // 输入输出库
@@ -107,4 +107,4 @@
 
 
 
-#endif  // __STUDIO_MACROS_H__
+#endif  // STUDIO_MACROS_H

@@ -1,9 +1,8 @@
 
+#ifndef STUDIO_SINGLETON_H
+#define STUDIO_SINGLETON_H
+
 #include <iostream>
-
-
-#ifndef __STUDIO_SINGLETON_H__
-#define __STUDIO_SINGLETON_H__
 
 template <typename T>
 class studio_singleton
@@ -27,4 +26,4 @@ class studio_singleton
 
 
 
-#endif
+#endif // STUDIO_SINGLETON_H

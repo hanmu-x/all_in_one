@@ -7,6 +7,9 @@
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 
+#ifndef STUDIO_CRC_H
+#define STUDIO_CRC_H
+
 #include "studio_macros.h"
 
 /* 高阶字节CRC值表 */
@@ -69,8 +72,6 @@ static const uint8_t table_crc_lo[] = {
 	0x43, 0x83, 0x41, 0x81, 0x80, 0x40
 };
 
-#ifndef __STUDIO_CRC_H__
-#define __STUDIO_CRC_H__
 
 class studio_crc
 {
@@ -102,4 +103,4 @@ class studio_crc
   private:
 };
 
-#endif
+#endif // STUDIO_CRC_H
