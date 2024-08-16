@@ -38,6 +38,8 @@
 #include <future>
 #include <atomic>
 #include <functional>
+// 正则表达式
+#include <regex>
 
 
 

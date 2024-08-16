@@ -4,6 +4,7 @@
 #include "file/studio_dir.h"
 #include "time/studio_time.h"
 #include "string/studio_str_algo.h"
+#include "string/studio_regex.h"
 
 
 int main(int argc, char* argv[])
