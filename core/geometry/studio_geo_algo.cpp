@@ -2,6 +2,66 @@
 #include "studio_geo_algo.h"
 
 
+/////////////// 射线算法 //////////////////
+
+bool ray_algo::intersect(const studio_point& point, const std::vector<studio_point>& points)
+{
+    int i, j;
+    double d;
+    int num = points.size();
+    bool c = false;
+    for (i = 0, j = num - 1; i < num; j = i++)
+    {
+        d = (points[j].x - points[i].x) * (point.y - points[i].y) / (points[j].y - points[i].y) + points[i].x;
+        if (point.x == d)
+        {
+            return false;
+        }
+
+        if ((((points[i].y <= point.y) && (point.y < points[j].y) || ((points[j].y <= point.y) && (point.y < points[i].y))) && (point.x < d)))
+        {
+            c = !c;
+        }
+    }
+    return c;
+}
+
+bool ray_algo::intersect(const studio_poly& mpoly, const studio_point& point)
+{
+    int intersections = 0;
+    studio_point ray_end(point.x + 1000, point.y);  // 向右引一条射线 1000单位
+
+    // 外环
+    bool is_in_outer_ring = intersect(point, mpoly.outer_ring.points);
+    if (is_in_outer_ring)
+    {
+        // 内环
+        for (const auto& inner : mpoly.inner_rings)
+        {
+            if (intersect(point, inner.points))  // 在内环内
+            {
+                return false;  // 如果这个点在一个内环内就属于在面外
+            }
+        }
+        return true;  // 点在外环内,且不在任何一个内环内
+    }
+    else
+    {
+        return false;
+    }
+}
+
+
+
+
+
+
+
+
+
+//////////// 扫描线算法 ///////////
+
+
 void scan_line_algo::set(const studio_geo_rect& rect, const double& cell_size)
 {
     m_rect = rect;

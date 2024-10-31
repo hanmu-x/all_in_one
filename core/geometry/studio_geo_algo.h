@@ -26,6 +26,20 @@ struct cover_pair
     int end;
 };
 
+/// 射线算法判断点是否在多边形内
+class ray_algo
+{
+    /// <summary>
+    /// 点是否与矢量面相交(射线算法),点的相交在面内或者在边界上都算是相交
+    /// </summary>
+    /// <param name="mpoly"></param>
+    /// <param name="point"></param>
+    /// <returns></returns>
+    static bool intersect(const studio_poly& mpoly, const studio_point& point);
+    static bool intersect(const studio_point& point, const std::vector<studio_point>& points);
+};
+
+
 /// 扫描线算法
 class scan_line_algo
 {
