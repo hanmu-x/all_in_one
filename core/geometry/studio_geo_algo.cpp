@@ -1,7 +1,6 @@
 
 #include "studio_geo_algo.h"
 
-
 /////////////// 射线算法 //////////////////
 
 bool ray_algo::intersect(const studio_point& point, const std::vector<studio_point>& points)
@@ -51,16 +50,7 @@ bool ray_algo::intersect(const studio_poly& mpoly, const studio_point& point)
     }
 }
 
-
-
-
-
-
-
-
-
 //////////// 扫描线算法 ///////////
-
 
 void scan_line_algo::set(const studio_geo_rect& rect, const double& cell_size)
 {
@@ -85,7 +75,6 @@ double scan_line_algo::cell_size() const
     return m_cell_size;
 }
 
-
 bool scan_line_algo::scanning(const studio_point& point)
 {
     int raster_x = std::round((point.x - m_rect.left_top.x) / m_cell_size);
@@ -97,7 +86,6 @@ bool scan_line_algo::scanning(const studio_point& point)
     }
     return false;
 }
-
 
 bool scan_line_algo::scanning(const studio_multi_point& points)
 {
@@ -185,7 +173,6 @@ bool scan_line_algo::scanning(const studio_line& line)
     return true;
 }
 
-
 bool scan_line_algo::scanning(const studio_multi_studio_line& lines)
 {
     // m_row_pairs.clear();
@@ -197,7 +184,6 @@ bool scan_line_algo::scanning(const studio_multi_studio_line& lines)
 
     return true;
 }
-
 
 bool scan_line_algo::scanning(const std::vector<std::vector<raster_point>> vertices_arr)
 {
@@ -316,9 +302,6 @@ bool scan_line_algo::scanning(const studio_multi_poly& m_polys)
     return scanning(vertices_arr);
 }
 
-
-
-
 void scan_line_algo::check_line_point(studio_point point, std::vector<raster_point>& vct, int& last_x, int& last_y)
 {
     // m_row_pairs.clear();
@@ -359,6 +342,4 @@ void scan_line_algo::slim()
         }
     }
 }
-
-
 
