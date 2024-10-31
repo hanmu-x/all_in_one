@@ -5,10 +5,11 @@
 #include "time/studio_time.h"
 #include "string/studio_str_algo.h"
 #include "string/studio_regex.h"
-
+#include "time/studio_timer.h"
 
 int main(int argc, char* argv[])
 {
+    studio_timer timer;
     std::string dataDir = DEFAULT_AO_DATA_DIR;
     std::string input_txt = dataDir + "/txt/2003003.txt";
 
@@ -32,9 +33,12 @@ int main(int argc, char* argv[])
 
         int b = 0;
     }
-
-
     inFile.close();
+
+
+    timer.timed_print();
+
+
     return 0;
 
     //std::string inputDate1 = "2023-07-24 14:30:00";

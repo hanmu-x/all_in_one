@@ -1,4 +1,4 @@
-
+#pragma once
 #ifndef STUDIO_MACROS_H
 #define STUDIO_MACROS_H
 
@@ -42,12 +42,35 @@
 #include <regex>
 
 
-
+// π
 #ifndef PI
 #define PI (3.1415926535897932384626433832795028841971693993751f)
 #endif
 
+// π
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
 
+// π/2
+#ifndef M_PI_2
+#define M_PI_2 1.57079632679489661923
+#endif
+
+// 自然指数e
+#ifndef BASE_E
+#define BASE_E 2.71828182845904523536
+#endif
+
+// 最小浮点数
+#ifndef TINY
+#define TINY (1e-18)
+#endif
+
+// 一个极小的浮点数, 用于浮点数比较		EPS 与opencv的冲突
+#ifndef AO_EPSILON
+#define AO_EPSILON (.1e-18)
+#endif
 
 #ifndef AO_MAX
 #define AO_MAX(a, b) (((a) > (b)) ? (a) : (b))

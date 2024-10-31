@@ -1,20 +1,19 @@
 cmake_minimum_required(VERSION 3.15)
-project(ao_test CXX)
 
-foreach(dirname ${CMAKE_CURRENT_SOURCE_DIR})
-    file(GLOB_RECURSE AO_TEST_SRC_FILES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
-            "${dirname}/*.h"
-            "${dirname}/*.hpp"
-            "${dirname}/*.c"
-            "${dirname}/*.cpp"
-            )
-endforeach()
+#project(ao_test CXX)
+#foreach(dirname ${CMAKE_CURRENT_SOURCE_DIR})
+#    file(GLOB_RECURSE AO_TEST_SRC_FILES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
+#            "${dirname}/*.h"
+#            "${dirname}/*.hpp"
+#            "${dirname}/*.c"
+#            "${dirname}/*.cpp"
+#            )
+#endforeach()
 
 
 
-add_executable(${PROJECT_NAME} ${AO_TEST_SRC_FILES})
-
-target_link_libraries(${PROJECT_NAME} PUBLIC MultiTool)
+add_executable(TaskA task_a_main.cpp)
+target_link_libraries(TaskA PUBLIC MultiTool)
 
 
 # set(Boost_LIB_PREFIX "")
