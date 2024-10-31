@@ -251,21 +251,21 @@ class studio_rect  // 普通坐标点
 
     studio_rect(double l, double t, double r, double b)
     {
-        min.x = l;
-        max.y = t;
-        max.x = r;
-        min.y = b;
+        left_top.x = l;
+        right_bottom.y = t;
+        right_bottom.x = r;
+        left_top.y = b;
     }
 
     void correct()
     {
-        if (min.x > max.x)
+        if (left_top.x > right_bottom.x)
         {
-            std::swap(min.x, max.x);  // 使用 std::swap 简化交换操作
+            std::swap(left_top.x, right_bottom.x);  // 使用 std::swap 简化交换操作
         }
-        if (max.y > max.y)
+        if (right_bottom.y > right_bottom.y)
         {
-            std::swap(max.y, max.y);  // 使用 std::swap 简化交换操作
+            std::swap(right_bottom.y, right_bottom.y);  // 使用 std::swap 简化交换操作
         }
     }
 
@@ -274,30 +274,30 @@ class studio_rect  // 普通坐标点
     bool operator==(const studio_rect& rect) const
     {
         bool result = true;
-        result &= std::abs(rect.min.x - this->min.x) <= AO_EPSILON;
-        result &= std::abs(rect.max.y - this->max.y) <= AO_EPSILON;
-        result &= std::abs(rect.max.x - this->max.x) <= AO_EPSILON;
-        result &= std::abs(rect.max.y - this->max.y) <= AO_EPSILON;
+        result &= std::abs(rect.left_top.x - this->left_top.x) <= AO_EPSILON;
+        result &= std::abs(rect.right_bottom.y - this->right_bottom.y) <= AO_EPSILON;
+        result &= std::abs(rect.right_bottom.x - this->right_bottom.x) <= AO_EPSILON;
+        result &= std::abs(rect.right_bottom.y - this->right_bottom.y) <= AO_EPSILON;
         return result;
     }
 
     bool operator!=(const studio_rect& rect) const
     {
         bool result = true;
-        result &= std::abs(rect.min.x - this->min.x) > AO_EPSILON;
-        result &= std::abs(rect.max.y - this->max.y) > AO_EPSILON;
-        result &= std::abs(rect.max.x - this->max.x) > AO_EPSILON;
-        result &= std::abs(rect.max.y - this->max.y) > AO_EPSILON;
+        result &= std::abs(rect.left_top.x - this->left_top.x) > AO_EPSILON;
+        result &= std::abs(rect.right_bottom.y - this->right_bottom.y) > AO_EPSILON;
+        result &= std::abs(rect.right_bottom.x - this->right_bottom.x) > AO_EPSILON;
+        result &= std::abs(rect.right_bottom.y - this->right_bottom.y) > AO_EPSILON;
         return result;
     }
 
     /// 两个矩形框是否相交
     bool intersect(const studio_rect& rect) const
     {
-        double zx = std::abs(rect.min.x + rect.max.x - min.x - max.x);
-        double x = std::abs(rect.min.x - rect.max.x) + std::abs(min.x - max.x);
-        double zy = std::abs(rect.max.y + rect.max.y - max.y - max.y);
-        double y = std::abs(rect.max.y - rect.max.y) + std::abs(max.y - max.y);
+        double zx = std::abs(rect.left_top.x + rect.right_bottom.x - left_top.x - right_bottom.x);
+        double x = std::abs(rect.left_top.x - rect.right_bottom.x) + std::abs(left_top.x - right_bottom.x);
+        double zy = std::abs(rect.right_bottom.y + rect.right_bottom.y - right_bottom.y - right_bottom.y);
+        double y = std::abs(rect.right_bottom.y - rect.right_bottom.y) + std::abs(right_bottom.y - right_bottom.y);
         if (zx <= x && zy <= y)
         {
             return true;
@@ -309,8 +309,8 @@ class studio_rect  // 普通坐标点
     }
 
   public:
-    studio_point min;
-    studio_point max;
+    studio_point left_top;
+    studio_point right_bottom;
 };
 using studio_geo_rect = studio_rect;
 
