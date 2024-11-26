@@ -1,7 +1,6 @@
 
 #include "studio_json.h"
 
-
 Json::Value studio_json::loadJsonOfFile(const std::string& file)
 {
     std::fstream input;
@@ -37,6 +36,11 @@ Json::Value studio_json::loadJsonOfString(const std::string& content)
     return Json::nullValue;
 }
 
+std::string studio_json::dumpsJsonToString(const Json::Value& root, const studio_json_opt& opt)
+{
+    return studio_json::to_string(root, opt);
+}
+
 bool studio_json::writeJsonToFile(const Json::Value& root, const std::string& file)
 {
     bool status = false;
@@ -44,8 +48,8 @@ bool studio_json::writeJsonToFile(const Json::Value& root, const std::string& fi
     Json::StreamWriterBuilder builder;
     builder["commentStyle"] = "None";
     builder["indentation"] = "    ";  // 设置有自动缩进的,若禁用缩进为""
-    builder["emitUTF8"] = true;  // 显式设置为 UTF-8
-    
+    builder["emitUTF8"] = true;       // 显式设置为 UTF-8
+
     // 创建一个 StreamWriter
     std::unique_ptr<Json::StreamWriter> writer(builder.newStreamWriter());
 
@@ -64,17 +68,6 @@ bool studio_json::writeJsonToFile(const Json::Value& root, const std::string& fi
     }
     return status;
 }
-
-
-
-
-
-
-
-
-
-
-
 
 std::string studio_json::to_string(const Json::Value root, const studio_json_opt& opt)
 {
@@ -170,6 +163,49 @@ void studio_json::find_by_key(const Json::Value& root, const std::string& key, c
         find_object(root, key, filter, arr);
     }
 }
+
+bool studio_json::check_member_object(const Json::Value& root, const std::string& key, Json::Value& jv_obj)
+{
+    if (root.isMember(key))
+    {
+        if (root[key].isObject())
+        {
+            jv_obj = root[key];
+            return true;
+        }
+        else
+        {
+            AO_ERROR_PRINT("字段 {} 不是数组类型", key)
+        }
+    }
+    else
+    {
+        AO_ERROR_PRINT("不存在字段 {}", key)
+    }
+    return false;
+}
+
+bool studio_json::check_member_array(const Json::Value& root, const std::string& key, Json::Value& jv_arr)
+{
+    if (root.isMember(key))
+    {
+        if (root[key].isArray())
+        {
+            jv_arr = root[key];
+            return true;
+        }
+        else
+        {
+            AO_ERROR_PRINT("字段 {} 不是数组类型", key)
+        }
+    }
+    else
+    {
+        AO_ERROR_PRINT("不存在字段 {}", key)
+    }
+    return false;
+}
+
 bool studio_json::check_member_string(const Json::Value& root, const std::string& key, std::string& val)
 {
     if (root.isMember(key))
@@ -249,18 +285,23 @@ bool studio_json::check_member_bool(const Json::Value& root, const std::string& 
     }
     return false;
 }
-bool studio_json::check_member_array(const Json::Value& root, const std::string& key, Json::Value& jv_arr)
+bool studio_json::check_member_uint(const Json::Value& root, const std::string& key, int32_t& val)
 {
+    if (root.isNull())
+    {
+        AO_ERROR_PRINT("json 为空")
+        return false;
+    }
     if (root.isMember(key))
     {
-        if (root[key].isArray())
+        if (root[key].isUInt())
         {
-            jv_arr = root[key];
+            val = root[key].asUInt();
             return true;
         }
         else
         {
-            AO_ERROR_PRINT("字段 {} 不是数组类型", key)
+            AO_ERROR_PRINT("字段 {} 不是uint类型", key)
         }
     }
     else
@@ -269,23 +310,54 @@ bool studio_json::check_member_array(const Json::Value& root, const std::string&
     }
     return false;
 }
-bool studio_json::check_member_object(const Json::Value& root, const std::string& key, Json::Value& jv_obj)
+bool studio_json::check_member_long(const Json::Value& root, const std::string& key, int64_t& val)
 {
+    if (root.isNull())
+    {
+        AO_ERROR_PRINT("json 为空")
+        return false;
+    }
     if (root.isMember(key))
     {
-        if (root[key].isObject())
+        if (root[key].isInt64())
         {
-            jv_obj = root[key];
+            val = root[key].asInt64();
             return true;
         }
         else
         {
-            AO_ERROR_PRINT("字段 {} 不是数组类型", key)
+            AO_ERROR_PRINT("字段 {} 不是int64类型", key)
         }
     }
     else
     {
         AO_ERROR_PRINT("不存在字段 {}", key)
     }
+    return false;
+}
+bool studio_json::check_member_ulong(const Json::Value& root, const std::string& key, uint64_t& val)
+{
+    if (root.isNull())
+    {
+        AO_ERROR_PRINT("json 为空")
+        return false;
+    }
+    if (root.isMember(key))
+    {
+        if (root[key].isUInt64())
+        {
+            val = root[key].asUInt64();
+            return true;
+        }
+        else
+        {
+            AO_ERROR_PRINT("字段 {} 不是uint64类型", key)
+        }
+    }
+    else
+    {
+        AO_ERROR_PRINT("不存在字段 {}", key)
+    }
+
     return false;
 }
