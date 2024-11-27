@@ -9,8 +9,7 @@
 
 #else  // Linux
 
-#include <dirent.h>
-#include <fstream>
+#include <filesystem>
 #include <sstream>
 #include <sys/types.h>
 #include <unistd.h>
@@ -143,20 +142,18 @@ std::string getExePath(unsigned int pid)
 
 bool studio_background::getAllPrj()
 {
-    DIR* dir = opendir("/proc");
-    if (dir == nullptr)
+    std::filesystem::path dir("/proc");
+    if (!std::filesystem::exists(dir))
     {
-        std::cerr << "Failed to open /proc directory!" << std::endl;
+        std::cout << "Failed to open /proc directory!" << std::endl;
         return false;
     }
-
-    struct dirent* entry;
-    while ((entry = readdir(dir)) != nullptr)
+    for (const auto& entry : std::filesystem::directory_iterator(dir))
     {
-        if (entry->d_type == DT_DIR)
+        if (entry.is_directory())
         {
             unsigned int pid;
-            if (std::stringstream(entry->d_name) >> pid)
+            if (std::stringstream(entry.path().filename().string()) >> pid)
             {
                 // 检查是否为数字
                 prj_info temp_info;
@@ -174,7 +171,6 @@ bool studio_background::getAllPrj()
         }
     }
 
-    closedir(dir);
     return true;
 }
 
