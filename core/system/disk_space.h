@@ -4,7 +4,6 @@
 
 #include "studio_macros.h"
 
-
 class studio_diskspace
 {
   private:
@@ -15,7 +14,6 @@ class studio_diskspace
     double available_rate{0.0};
 
   public:
-
     /// <summary>
     /// 检测磁盘空间
     /// </summary>
@@ -44,4 +42,4 @@ class studio_diskspace
     }
 };
 
-#endif // DISK_SPACE_H
+#endif  // DISK_SPACE_H
