@@ -7,7 +7,7 @@
 #include <tlhelp32.h>
 #include "encode/studio_encode.h"
 
-#else // Linux
+#else  // Linux
 
 #include <dirent.h>
 #include <fstream>
@@ -16,7 +16,7 @@
 #include <unistd.h>
 #include <signal.h>  // For kill()
 
-#endif // 头文件
+#endif  // 头文件
 
 #ifdef _WIN32
 
@@ -74,7 +74,6 @@ bool studio_background::getAllPrj()
 
     return true;
 }
-
 
 bool studio_background::stopPrj(const std::string& name)
 {
@@ -142,8 +141,6 @@ std::string getExePath(unsigned int pid)
     return "";
 }
 
-
-
 bool studio_background::getAllPrj()
 {
     DIR* dir = opendir("/proc");
@@ -160,13 +157,13 @@ bool studio_background::getAllPrj()
         {
             unsigned int pid;
             if (std::stringstream(entry->d_name) >> pid)
-            {  
+            {
                 // 检查是否为数字
                 prj_info temp_info;
                 temp_info.pid = pid;
                 temp_info.name = getCmdline(pid);
                 temp_info.path = getExePath(pid);
-                //temp_info.status = true;  // 根据需要设置状态
+                // temp_info.status = true;  // 根据需要设置状态
 
                 // 将进程信息添加到列表中
                 if (!temp_info.name.empty())
@@ -180,7 +177,6 @@ bool studio_background::getAllPrj()
     closedir(dir);
     return true;
 }
-
 
 bool studio_background::stopPrj(const std::string& name)
 {
@@ -219,4 +215,4 @@ bool studio_background::stopPrj(const std::string& name)
     return true;
 }
 
-#endif 
+#endif

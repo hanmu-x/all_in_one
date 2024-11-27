@@ -9,12 +9,12 @@
 #include "system/background.h"
 
 
-
+// 查询进行 关闭进程
 int main(int argc, char* argv[])
 {
     studio_background background;
     background.getAllPrj();
-    background.stopPrj("./Web");
+    background.stopPrj("./web");
 
 	return 0;
 }
