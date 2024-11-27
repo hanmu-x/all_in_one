@@ -14,7 +14,7 @@ int main(int argc, char* argv[])
 {
     studio_background background;
     background.getAllPrj();
-    background.stopPrj("SpatialAnalysis.exe");
+    background.stopPrj("./Web");
 
 	return 0;
 }

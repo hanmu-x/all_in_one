@@ -40,7 +40,7 @@
 #include <functional>
 // 正则表达式
 #include <regex>
-
+#include <climits>  // 包含 INT_MAX 定义
 
 // π
 #ifndef PI

@@ -6,6 +6,15 @@
 
 #include "studio_macros.h"
 
+struct prj_info
+{
+  std::string name;
+  std::string path;
+  unsigned int pid;
+  bool status;
+
+};
+
 class studio_background
 {
   public:
@@ -23,7 +32,11 @@ class studio_background
     bool stopPrj(const std::string& name);
 
   public:
-    std::unordered_map<std::string, std::vector<unsigned int>> name_pid;
+
+    std::unordered_map<std::string, std::vector<prj_info>> prj_list;
+
+    //std::unordered_map<std::string, std::vector<unsigned int>> name_pid;
+
 };
 
 #endif  // BACKGROUND_H
