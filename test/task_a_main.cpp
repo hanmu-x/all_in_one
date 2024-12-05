@@ -14,7 +14,7 @@ int main(int argc, char* argv[])
 {
     studio_background background;
     background.getAllPrj();
-    background.stopPrj("./web");
+    background.stopPrj("./TzxTopoWeb");
 
 	return 0;
 }
