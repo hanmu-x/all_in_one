@@ -4,7 +4,6 @@
 
 #include "studio_macros.h"
 
-
 class studio_dir
 {
   public:
@@ -38,10 +37,23 @@ class studio_dir
     /// <param name="path"></param>
     /// <returns></returns>
     static std::map<std::string, std::string> getLastModifiedTimesInDirectory(const std::string& path);
-    
+
+    /// <summary>
+    /// 删除指定文件
+    /// </summary>
+    /// <param name="path"></param>
+    /// <returns></returns>
+    static bool remove(const std::string& path);
+
+    /// <summary>
+    /// 删除指定目录
+    /// </summary>
+    /// <param name="path"></param>
+    /// <returns></returns>
+    static bool removeAll(const std::string& path);
 
     studio_dir() = default;
     ~studio_dir() = default;
 };
 
-#endif // STUDIO_DIR_H
+#endif  // STUDIO_DIR_H

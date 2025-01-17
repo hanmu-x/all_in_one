@@ -1,8 +1,6 @@
 
 #include "studio_dir.h"
 
-
-
 std::vector<std::string> studio_dir::collectFileOrDirEntries(const std::string& directoryPath, bool isFile, bool returnFullPath, bool recursive)
 {
     std::vector<std::string> entries;
@@ -52,8 +50,6 @@ std::vector<std::string> studio_dir::collectFileOrDirEntries(const std::string& 
     return entries;
 }
 
-
-
 bool studio_dir::createDirectoryIfNotExists(const std::string& directoryPath)
 {
     std::filesystem::path path(directoryPath);
@@ -84,7 +80,6 @@ bool studio_dir::createDirectoryIfNotExists(const std::string& directoryPath)
     }
 }
 
-
 int studio_dir::count_files(const std::string& directory_path)
 {
     int file_count = 0;
@@ -109,9 +104,6 @@ int studio_dir::count_files(const std::string& directory_path)
     return file_count;
 }
 
-
-
-
 std::map<std::string, std::string> studio_dir::getLastModifiedTimesInDirectory(const std::string& path)
 {
     std::map<std::string, std::string> path_tm;
@@ -134,17 +126,48 @@ std::map<std::string, std::string> studio_dir::getLastModifiedTimesInDirectory(c
     return path_tm;
 }
 
+bool studio_dir::remove(const std::string& path)
+{
+    bool status = false;
+    try
+    {
+        // 首先检查路径是否存在
+        if (!std::filesystem::exists(path))
+        {
+            std::cout << "Error: Path does not exist: " << path << std::endl;
+            return false;  // 文件不存在，直接返回 false
+        }
 
+        // 判断是否为普通文件
+        if (!std::filesystem::is_regular_file(path))
+        {
+            std::cout << "Error: Path is not a regular file: " << path << std::endl;
+            return false;  // 路径不是普通文件，直接返回 false
+        }
+        // 尝试删除文件
+        std::filesystem::remove(path);
+        std::cout << "Successfully removed file: " << path << std::endl;
+        status = true;
+    }
+    catch (const std::filesystem::filesystem_error& e)
+    {
+        std::cout << "Error removing file: " << e.what() << std::endl;
+    }
+    return status;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
+bool studio_dir::removeAll(const std::string& path)
+{
+    bool status = false;
+    try
+    {
+        // 尝试递归删除目录及其内容
+        std::filesystem::remove_all(path);
+        status = true;
+    }
+    catch (const std::filesystem::filesystem_error& e)
+    {
+        std::cout << "Error removing directory: " << e.what() << std::endl;
+    }
+    return status;
+}
