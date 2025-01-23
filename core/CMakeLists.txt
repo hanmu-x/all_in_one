@@ -28,6 +28,9 @@ target_link_libraries(${PROJECT_NAME} PUBLIC JsonCpp::JsonCpp)
 find_package(ZLIB REQUIRED)
 target_link_libraries(${PROJECT_NAME} PUBLIC ZLIB::ZLIB)
 
+find_package(fmt CONFIG REQUIRED)
+target_link_libraries(${PROJECT_NAME} PUBLIC fmt::fmt)
+
 if(IS_LINUX)
 
 endif()

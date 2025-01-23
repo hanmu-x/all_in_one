@@ -217,12 +217,13 @@ bool studio_json::check_member_string(const Json::Value& root, const std::string
         }
         else
         {
-            AO_ERROR_PRINT("字段 {} 不是string类型", key)
+            AO_ERROR_PRINT("字段 {} 不是string类型", key);
         }
     }
     else
     {
-        AO_ERROR_PRINT("不存在字段 {}", key)
+        AO_ERROR_PRINT("不存在字段 {}", key);
+        std::cout << "不存在字段 " << key << std::endl;
     }
     return false;
 }
@@ -276,7 +277,7 @@ bool studio_json::check_member_bool(const Json::Value& root, const std::string& 
             return true;
         }
         {
-            AO_ERROR_PRINT("字段 {} 不是bool类型", key)
+            AO_ERROR_PRINT("字段 {} 不是bool类型", key);
         }
     }
     else

@@ -42,6 +42,9 @@
 #include <regex>
 #include <climits>  // 包含 INT_MAX 定义
 
+#include <locale>
+#include <codecvt> // 注意：在一些编译器中可能需要这个头文件来使用 codecvt_utf8
+
 // π
 #ifndef PI
 #define PI (3.1415926535897932384626433832795028841971693993751f)
@@ -116,20 +119,33 @@
 #ifndef AO_PRINTF
 // 打印信息 未封装
 #define AO_PRINTF(s, ...)
-#endif
+#endif // AO_PRINTF
 
 #ifndef AO_INFO_PRINT
 // 打印提示信息
 #define AO_INFO_PRINT(s, ...) printf(AO_PRINTF_COLOR_CYAN "\n[INFO] %s:%I32d \n " s AO_PRINTF_COLOR_NONE " \n", AO_FILE_NAME, __LINE__, ##__VA_ARGS__);
-#endif
+#endif // AO_INFO_PRINT
 
 #ifndef AO_ERROR_PRINT
 // 打印错误信息
 #define AO_ERROR_PRINT(s, ...) printf(AO_PRINTF_COLOR_RED "\n[ERROR] %s:%I32d \n ... " s AO_PRINTF_COLOR_NONE, AO_FILE_NAME, __LINE__, ##__VA_ARGS__);
+#endif // AO_ERROR_PRINT
+
+#ifndef AO_TIME
+#define AO_TIME
+#define SEC_IN_MIN 60
+#define MIN_IN_HOUR 60
+#define HOUR_IN_DAY 24
+#define SEC_IN_HOUR (SEC_IN_MIN * MIN_IN_HOUR)
+#define MIN_IN_DAY (MIN_IN_HOUR * HOUR_IN_DAY)
+#define SEC_IN_DAY (SEC_IN_MIN * MIN_IN_HOUR * HOUR_IN_DAY)
+#endif // AO_TIME
+
+#ifndef AO_KB
+#define AO_KB (1024)
+#define AO_MB (1024 * 1024)
+#define AO_GB (1024 * 1024 * 1024)
 #endif
-
-
-
 
 
 #endif  // STUDIO_MACROS_H
